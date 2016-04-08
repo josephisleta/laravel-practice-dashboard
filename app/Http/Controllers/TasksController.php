@@ -16,6 +16,12 @@ class TasksController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->middleware('user.task', ['only' => [
+            'show',
+            'edit',
+            'destroy',
+        ]]);
     }
 
     public function index()
