@@ -97,7 +97,7 @@ class TasksController extends Controller
                         ->where('user_id', Auth::user()->id)
                         ->where('status', $status)
                         ->where('due_date', '<=' , $due_date)
-                        ->get();
+                        ->paginate(5);
 
         return view('tasks.index', compact('tasks', 'type'));
     }
