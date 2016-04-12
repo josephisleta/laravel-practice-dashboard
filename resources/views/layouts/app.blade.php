@@ -73,6 +73,7 @@
                         </li>
                     @endif
                 </ul>
+                @if (Auth::user())
                 <ul class="nav navbar-nav " style="width: 300px; padding-top: 9px; padding-left: 50px;">
                     <li>
                         <form class="right" action="{{ action('TasksController@search') }}" method="get">
@@ -87,6 +88,7 @@
                         </form>
                     </li>
                 </ul>
+                @endif
             </div>
         </div>
     </nav>
