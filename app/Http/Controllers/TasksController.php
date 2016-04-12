@@ -91,6 +91,14 @@ class TasksController extends Controller
         return back();
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->get('search');
+        $tasks = Task::latest()->where('title', 'like', '%'.$keyword.'%')->get();
+
+        return view('tasks.search', compact('tasks', 'keyword'));
+    }
+
     public function redirectToIndex($status = Task::STATUS_PENDING, $type = Task::TYPE_ACTIVE, $due_date = Carbon::DEFAULT_TO_STRING_FORMAT)
     {
         $tasks = Task::latest()

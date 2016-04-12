@@ -47,11 +47,12 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 @if (Auth::user())
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-left">
                         <li><a href="{{ url('/tasks') }}">Tasks</a></li>
                         <li><a href="{{ url('/tasks/completed') }}">Completed</a></li>
                         <li><a href="{{ url('/tasks/overdue') }}">Overdue</a></li>
                     </ul>
+
                 @endif
 
                 <!-- Right Side Of Navbar -->
@@ -71,6 +72,20 @@
                             </ul>
                         </li>
                     @endif
+                </ul>
+                <ul class="nav navbar-nav " style="width: 300px; padding-top: 9px; padding-left: 50px;">
+                    <li>
+                        <form class="right" action="{{ action('TasksController@search') }}" method="get">
+                            <div class="input-group">
+                                <input name="search" type="search" class="form-control" placeholder="Search tasks" required />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" type="submit">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
