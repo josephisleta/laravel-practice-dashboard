@@ -8,6 +8,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>{{ $type }} Tasks </h2>
+                        @unless ($tasks->isEmpty())
+                            <p class="small">Total {{ $type }} task count: {{ $count }}</p>
+                        @endunless
                         @if($type == 'Active')
                             <a href="{{ action('TasksController@create') }}" class="btn btn-xs btn-info">Create New</a>
                         @endif

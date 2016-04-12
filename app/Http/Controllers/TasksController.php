@@ -95,8 +95,9 @@ class TasksController extends Controller
     {
         $keyword = $request->get('search');
         $tasks = Task::latest()->where('title', 'like', '%'.$keyword.'%')->get();
+        $count = count($tasks);
 
-        return view('tasks.search', compact('tasks', 'keyword'));
+        return view('tasks.search', compact('tasks', 'keyword', 'count'));
     }
 
     public function redirectToIndex($status = Task::STATUS_PENDING, $type = Task::TYPE_ACTIVE, $due_date = Carbon::DEFAULT_TO_STRING_FORMAT)
@@ -106,8 +107,9 @@ class TasksController extends Controller
                         ->where('status', $status)
                         ->where('due_date', '<=' , $due_date)
                         ->paginate(5);
+        $count = $tasks->total;
 
-        return view('tasks.index', compact('tasks', 'type'));
+        return view('tasks.index', compact('tasks', 'type', 'count'));
     }
 
     private function redirectToTask(Task $task)

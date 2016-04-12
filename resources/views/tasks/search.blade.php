@@ -8,13 +8,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>Search Result</h2>
-                        <p>Keyword: {{ $keyword }}</p>
+                        <p class="small">Keyword: <i>{{ $keyword }}</i></p>
+                        <p class="small"><i>{{ $count }}</i> result/s</p>
                     </div>
 
                     @include('session.partial')
 
                     @if ($tasks->isEmpty())
-                        <p> No result.</p>
+
                     @else
                         <table class="table">
                             <thead>
