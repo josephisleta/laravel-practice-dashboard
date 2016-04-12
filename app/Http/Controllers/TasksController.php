@@ -31,7 +31,7 @@ class TasksController extends Controller
 
     public function show(Task $task)
     {
-        return view('tasks.show', compact('task'));
+        return $this->redirectToTask($task);
     }
 
     public function create()
@@ -63,7 +63,7 @@ class TasksController extends Controller
         $task->save();
         Session::flash('status', Task::FLASH_EDITED_TASK);
 
-        return $this->redirectToIndex();
+        return $this->redirectToTask($task);
     }
 
     public function destroy(Task $task)
@@ -100,5 +100,12 @@ class TasksController extends Controller
                         ->get();
 
         return view('tasks.index', compact('tasks', 'type'));
+    }
+
+    private function redirectToTask(Task $task)
+    {
+        $notes = $task->notes()->get();
+
+        return view('tasks.show', compact('task', 'notes'));
     }
 }

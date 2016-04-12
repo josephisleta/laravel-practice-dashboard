@@ -10,7 +10,8 @@ Route::post('tasks/{task}/edit', 'TasksController@update');
 Route::post('tasks/{task}/delete', 'TasksController@destroy');
 Route::get('tasks/{task}', 'TasksController@show');
 Route::post('tasks/{task}', 'TasksController@setDone');
-
+Route::post('tasks/{task}/note', 'NotesController@store');
+Route::post('tasks/notes/{note}/delete', 'NotesController@destroy');
 Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'PagesController@home');
