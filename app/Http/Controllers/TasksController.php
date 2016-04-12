@@ -44,7 +44,7 @@ class TasksController extends Controller
         Auth::user()->tasks()->create($request->all());
         Session::flash('status', Task::FLASH_CREATED_TASK);
 
-        return $this->redirectToIndex();
+        return redirect()->back();
     }
 
     public function edit(Task $task)
