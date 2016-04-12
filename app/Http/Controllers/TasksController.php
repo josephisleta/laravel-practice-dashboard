@@ -94,7 +94,10 @@ class TasksController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->get('search');
-        $tasks = Task::latest()->where('title', 'like', '%'.$keyword.'%')->get();
+        $tasks = Task::latest()
+            ->where('title', 'like', '%'.$keyword.'%')
+            ->where('user_id', Auth::user()->id)
+            ->get();
         $count = count($tasks);
 
         return view('tasks.search', compact('tasks', 'keyword', 'count'));
