@@ -14,9 +14,7 @@
 
                     @include('session.partial')
 
-                    @if ($tasks->isEmpty())
-
-                    @else
+                    @unless($tasks->isEmpty())
                         <table class="table">
                             <thead>
                                 <tr>
@@ -47,8 +45,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-
-                    @endif
+                    @endunless
                 </div>
         </div>
     </div>
