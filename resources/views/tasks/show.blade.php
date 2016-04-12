@@ -80,6 +80,7 @@
                             <button type="submit" class="btn btn-primary">Post Note</button>
                         </div>
                     </div>
+                    @include('errors.partial')
                     </fieldset>
                 </form>
             </div>
