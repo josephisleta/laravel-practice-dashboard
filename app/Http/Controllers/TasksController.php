@@ -117,7 +117,7 @@ class TasksController extends Controller
 
     private function redirectToTask(Task $task)
     {
-        $notes = $task->notes()->get();
+        $notes = $task->notes()->paginate(5);
 
         return view('tasks.show', compact('task', 'notes'));
     }

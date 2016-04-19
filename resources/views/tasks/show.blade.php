@@ -65,6 +65,9 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="text-center">
+                    {{ $notes->render() }}
+                </div>
                 </div>
                 <form class="form-horizontal" method="POST" action="{{ action('NotesController@store', $task->id) }}">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
