@@ -110,7 +110,7 @@ class TasksController extends Controller
                         ->where('status', $status)
                         ->where('due_date', '<=' , $due_date)
                         ->paginate(5);
-        $count = $tasks->total;
+        $count = count($tasks);
 
         return view('tasks.index', compact('tasks', 'type', 'count'));
     }
